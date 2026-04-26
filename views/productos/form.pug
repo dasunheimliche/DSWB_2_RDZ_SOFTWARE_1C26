@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  section
+    h2= producto ? "Editar producto" : "Nuevo producto"
+    form.form(method="POST" action=accion)
+      label
+        span Nombre
+        input(type="text" name="nombre" required value=producto ? producto.nombre : "")
+      label
+        span Categoría
+        input(type="text" name="categoria" required value=producto ? producto.categoria : "")
+      label
+        span Precio
+        input(type="number" step="0.01" min="0" name="precio" required value=producto ? producto.precio : "")
+      label
+        span Stock
+        input(type="number" min="0" name="stock" required value=producto ? producto.stock : "")
+      .acciones
+        button.btn.btn-primario(type="submit") Guardar
+        a.btn.btn-sec(href="/productos") Cancelar

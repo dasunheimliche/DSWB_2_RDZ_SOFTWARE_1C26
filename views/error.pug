@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  section.error
+    h2 Ocurrió un error
+    p= mensaje || "Recurso no encontrado"
+    a.btn(href="/") Volver al inicio

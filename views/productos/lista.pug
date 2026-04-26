@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  section
+    h2 Productos
+    a.btn.btn-primario(href="/productos/nuevo") + Nuevo producto
+    if productos && productos.length
+      table.tabla
+        thead
+          tr
+            th Nombre
+            th Categoría
+            th Precio
+            th Stock
+            th Acciones
+        tbody
+          each p in productos
+            tr
+              td= p.nombre
+              td= p.categoria
+              td $#{p.precio}
+              td= p.stock
+              td.acciones
+                a.btn.btn-sec(href=`/productos/${p.id}/editar`) Editar
+                form(method="POST" action=`/productos/${p.id}?_method=DELETE` style="display:inline")
+                  button.btn.btn-peligro(type="submit") Eliminar
+    else
+      p.vacio No hay productos cargados todavía.

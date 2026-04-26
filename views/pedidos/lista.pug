@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  section
+    h2 Pedidos
+    a.btn.btn-primario(href="/pedidos/nuevo") + Nuevo pedido
+    if pedidos && pedidos.length
+      table.tabla
+        thead
+          tr
+            th Solicitante
+            th Origen
+            th Estado
+            th Items
+            th Total
+            th Fecha
+            th Acciones
+        tbody
+          each p in pedidos
+            tr
+              td= p.nombreSolicitante
+              td= p.origen
+              td
+                span.estado(class=`estado-${p.estado}`)= p.estado
+              td
+                ul.items
+                  each it in p.items
+                    li #{it.nombre} x #{it.cantidad}
+              td $#{p.total}
+              td= new Date(p.fechaCreacion).toLocaleString('es-AR')
+              td.acciones
+                a.btn.btn-sec(href=`/pedidos/${p.id}/editar`) Editar
+                form(method="POST" action=`/pedidos/${p.id}?_method=DELETE` style="display:inline")
+                  button.btn.btn-peligro(type="submit") Eliminar
+    else
+      p.vacio No hay pedidos registrados todavía.

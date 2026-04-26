@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  section
+    h2= pedido ? "Editar pedido" : "Nuevo pedido"
+    form.form(method="POST" action=accion)
+      label
+        span Nombre del solicitante (sucursal/franquicia)
+        input(type="text" name="nombreSolicitante" required value=pedido ? pedido.nombreSolicitante : "")
+      label
+        span Origen
+        select(name="origen" required)
+          each o in origenes
+            option(value=o selected=pedido && pedido.origen === o)= o
+      label
+        span Estado
+        select(name="estado")
+          each e in estados
+            option(value=e selected=pedido && pedido.estado === e)= e
+      fieldset.items-fieldset
+        legend Productos del pedido
+        if !productos || !productos.length
+          p.vacio Cargá productos primero para poder armar pedidos.
+        else
+          each prod in productos
+            - var seleccionado = pedido ? pedido.items.find(function(i){return i.productoId === prod.id}) : null
+            .item-row
+              label.item-check
+                input(type="checkbox" name="productoId" value=prod.id checked=!!seleccionado)
+                span #{prod.nombre} ($#{prod.precio})
+              label.item-cant
+                span Cantidad
+                input(type="number" name="cantidad" min="0" value=seleccionado ? seleccionado.cantidad : 0)
+      .acciones
+        button.btn.btn-primario(type="submit") Guardar
+        a.btn.btn-sec(href="/pedidos") Cancelar

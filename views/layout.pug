@@ -1,0 +1,18 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title= title || "La Espiga de Oro - Gestión de Pedidos"
+    link(rel="stylesheet" href="/css/styles.css")
+  body
+    header.topbar
+      h1 La Espiga de Oro S.R.L.
+      nav
+        a(href="/") Inicio
+        a(href="/productos") Productos
+        a(href="/pedidos") Pedidos
+    main.contenedor
+      block content
+    footer
+      p IFTS 29 - Desarrollo Web Backend - Primer entrega
