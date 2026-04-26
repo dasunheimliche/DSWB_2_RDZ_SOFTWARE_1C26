@@ -1,0 +1,14 @@
+{
+  "name": "espiga-de-oro-backend",
+  "version": "1.0.0",
+  "description": "Sistema de gestion de pedidos para Panificadora Industrial 'La Espiga de Oro S.R.L.' - Caso 4 - Primer entrega DSWB IFTS29",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pug": "^3.0.3"
+  }
+}

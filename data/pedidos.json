@@ -1,0 +1,18 @@
+[
+  {
+    "id": "4f65b946-03ba-44eb-a9bf-8b2feb98686f",
+    "origen": "sucursal",
+    "nombreSolicitante": "Sucursal Norte",
+    "items": [
+      {
+        "productoId": "acd9162b-0499-4f8b-991c-c467e6271275",
+        "nombre": "Pan dulce",
+        "precio": 5000,
+        "cantidad": 10
+      }
+    ],
+    "estado": "en_produccion",
+    "fechaCreacion": "2026-04-26T17:42:28.920Z",
+    "total": 50000
+  }
+]
